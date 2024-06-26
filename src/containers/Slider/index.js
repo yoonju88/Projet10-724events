@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useMemo} from "react";
 import { useData } from "../../contexts/DataContext";
 import { getMonth } from "../../helpers/Date";
-
 import "./style.scss";
 
 const Slider = () => {
@@ -21,8 +20,8 @@ const Slider = () => {
   useEffect(() => {
     const timer = setTimeout(nextCard, 5000);
     return () => clearTimeout(timer); // cleanup 함수에서 타이머를 정리합니다.
-  }, [index, byDateDesc]);
-  
+  }, [index, byDateDesc]);  
+    
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
