@@ -16,7 +16,7 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue);
     setValue(newValue);
     setCollapsed(newValue);
   };
@@ -26,7 +26,7 @@ const Select = ({
       <div className="Select">
         <ul>
           <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
-            {value || (!titleEmpty && "Toutes")}
+            {value || (!titleEmpty && "Toutes")} {titleEmpty}
           </li>
           {!collapsed && (
             <>
