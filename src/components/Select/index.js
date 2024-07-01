@@ -26,7 +26,7 @@ const Select = ({
       <div className="Select">
         <ul>
           <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
-            {value || (!titleEmpty && "Toutes")} {titleEmpty}
+            {value || (!titleEmpty && "Toutes")}
           </li>
           {!collapsed && (
             <>
