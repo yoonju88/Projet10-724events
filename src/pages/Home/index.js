@@ -1,3 +1,4 @@
+import React, {useState, useEffect} from 'react';
 import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
@@ -13,7 +14,24 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  const { last } = useData()
+  const [lastData, setLastData] = useState(null)
+
+  useEffect (() => {
+    const receptionData = async () => {
+      try { 
+        const resultData = await last; 
+        setLastData(resultData);
+      }catch (error){
+        console.log('error result data', error)
+      }
+    }
+    receptionData ()
+  }, [last])
+
+  if (!lastData) {
+    return <div>loading...</div>
+  }
   return <>
     <header>
       <Menu />
@@ -117,9 +135,9 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
+          imageSrc={lastData?.cover}
+          title={lastData?.title}
+          date={new Date(lastData?.date)}
           small
           label="boom"
         />
