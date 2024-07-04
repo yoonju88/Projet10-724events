@@ -48,13 +48,12 @@ export const DataProvider = ({ children }) => {
         const latestDateEvent = new Date(latestEvent.date)
         const latestDateFocus = new Date(latestFocus.date)
           if (latestDateEvent > latestDateFocus ) {
-            setLast(latestEvent)
+            setLast(latestEvent)            
           } else if (latestDateEvent < latestDateFocus) {
             setLast(latestFocus)
           }
-      }
+     }
     }
-    
   }, [data])
 
   return (
