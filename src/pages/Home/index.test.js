@@ -3,6 +3,7 @@ import Home from "./index";
 
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
+  
     render(<Home />);
     await screen.findByText("Email");
     await screen.findByText("Nom");
@@ -13,6 +14,14 @@ describe("When Form is created", () => {
   describe("and a click is triggered on the submit button", () => {
     it("the success message is displayed", async () => {
       render(<Home />);
+      const nameInput = screen.getByPlaceholderText('Nom')
+      fireEvent.change(nameInput, {target: {value: "test"}})
+      const prenomInput = screen.getByPlaceholderText('Prénom')
+      fireEvent.change(prenomInput, {target: {value: "jean"}})
+      const emailInput = screen.getByPlaceholderText('Email')
+      fireEvent.change(emailInput, {target: {value: "test@gamil.com"}})
+      const textareaInput = screen.getByPlaceholderText('Message')
+      fireEvent.change(textareaInput, {target: {value: "test text"}})
       fireEvent(
         await screen.findByText("Envoyer"),
         new MouseEvent("click", {
@@ -21,6 +30,7 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
+
       await screen.findByText("Message envoyé !");
     });
   });
