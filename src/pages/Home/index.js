@@ -15,23 +15,16 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { last } = useData()
-  const [lastData, setLastData] = useState(null)
-
+  const [lastData, setLastData] = useState(null) 
+  
   useEffect (() => {
     const receptionData = async () => {
-      try { 
         const resultData = await last; 
         setLastData(resultData);
-      }catch (error){
-        console.log('error result data', error)
-      }
     }
     receptionData ()
   }, [last])
-
-  if (!lastData) {
-    return <div>loading...</div>
-  }
+ 
   return <>
     <header>
       <Menu />
@@ -134,6 +127,7 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
+        { lastData? 
         <EventCard
           imageSrc={lastData?.cover}
           title={lastData?.title}
@@ -141,6 +135,8 @@ const Page = () => {
           small
           label="boom"
         />
+        : <div> chargement...</div> 
+        }
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
