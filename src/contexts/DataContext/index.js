@@ -21,8 +21,8 @@ export const DataProvider = ({ children }) => {
   const [data, setData] = useState(null);
   const [last, setLast] = useState(null)
   const getData = useCallback(async () => {
-    try {  
-      const fetchedData = await api.loadData();   
+    try {
+      const fetchedData = await api.loadData();
       setData(fetchedData);
     } catch (err) {
       setError(err);
@@ -30,29 +30,29 @@ export const DataProvider = ({ children }) => {
   }, [setData, setError]);
 
   useEffect(() => {
-    if (data)return;
-    getData();   
-  },[data, getData]);
+    if (data) return;
+    getData();
+  }, [data, getData]);
 
-  useEffect (() => {
-    if (data && data.events && data.focus){
-      const latestEvent = data.events.reduce((a,b) => (
+  useEffect(() => {
+    if (data && data.events && data.focus) {
+      const latestEvent = data.events.reduce((a, b) => (
         new Date(b.date) > new Date(a.date) ? b : a
       ), data.events[0]);
 
-      const latestFocus = data.focus.reduce((a,b) => (
+      const latestFocus = data.focus.reduce((a, b) => (
         new Date(b.date) > new Date(a.date) ? b : a
       ), data.focus[0]);
 
-      if (latestEvent && latestFocus ) {
+      if (latestEvent && latestFocus) {
         const latestDateEvent = new Date(latestEvent.date)
         const latestDateFocus = new Date(latestFocus.date)
-          if (latestDateEvent > latestDateFocus ) {
-            setLast(latestEvent)            
-          } else if (latestDateEvent < latestDateFocus) {
-            setLast(latestFocus)
-          }
-     }
+        if (latestDateEvent > latestDateFocus) {
+          setLast(latestEvent)
+        } else if (latestDateEvent < latestDateFocus) {
+          setLast(latestFocus)
+        }
+      }
     }
   }, [data])
 

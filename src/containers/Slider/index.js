@@ -20,7 +20,7 @@ const Slider = () => {
   useEffect(() => {
     const timer = setTimeout(nextCard, 5000);
     return () => clearTimeout(timer); // cleanup 함수에서 타이머를 정리합니다.
-  }, [index, byDateDesc]);  
+  }, [index, byDateDesc]);
 
   return (
     <div className="SlideCardList">

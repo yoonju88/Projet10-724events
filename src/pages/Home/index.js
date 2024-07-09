@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
@@ -15,17 +15,17 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { last } = useData()
-  const [lastData, setLastData] = useState(null) 
-  
-  useEffect (() => {
+  const [lastData, setLastData] = useState(null)
+
+  useEffect(() => {
     const receptionData = async () => {
-        const resultData = await last; 
-        setLastData(resultData);
+      const resultData = await last;
+      setLastData(resultData);
     }
-    receptionData ()
+    receptionData()
   }, [last])
-  
- 
+
+
   return <>
     <header>
       <Menu />
@@ -65,7 +65,7 @@ const Page = () => {
       </section>
       <section className="EventsContainer" id="nos-realisations">
         <h2 className="Title" data-testid="event-title">Nos réalisations</h2>
-        <EventList/>
+        <EventList />
       </section>
       <section className="PeoplesContainer" id="notre-equipe">
         <h2 className="Title">Notre équipe</h2>
@@ -134,15 +134,15 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        { lastData? 
-        <EventCard
-          imageSrc={lastData?.cover}
-          title={lastData?.title}
-          date={new Date(lastData?.date)}
-          small
-          label="boom"
-        />
-        : <div> chargement...</div> 
+        {lastData ?
+          <EventCard
+            imageSrc={lastData?.cover}
+            title={lastData?.title}
+            date={new Date(lastData?.date)}
+            small
+            label="boom"
+          />
+          : <div> chargement...</div>
         }
       </div>
       <div className="col contact">
@@ -151,7 +151,7 @@ const Page = () => {
         <div>01 23 45 67 89</div>
         <div>contact@724events.com</div>
         <div>
-          <a href="#twitch" data-testid ="twitch">
+          <a href="#twitch" data-testid="twitch">
             <Icon name="twitch" />
           </a>
           <a href="#facebook">
@@ -166,7 +166,7 @@ const Page = () => {
         </div>
       </div>
       <div className="col description" >
-        <Logo size="large"/>
+        <Logo size="large" />
         <p data-testid="footer-desc">
           Une agence événementielle propose des prestations de service
           spécialisées dans la conception et l&apos;organisation de divers événements
