@@ -24,6 +24,7 @@ const Page = () => {
     }
     receptionData ()
   }, [last])
+  
  
   return <>
     <header>
@@ -63,42 +64,48 @@ const Page = () => {
         </div>
       </section>
       <section className="EventsContainer" id="nos-realisations">
-        <h2 className="Title">Nos réalisations</h2>
-        <EventList />
+        <h2 className="Title" data-testid="event-title">Nos réalisations</h2>
+        <EventList/>
       </section>
       <section className="PeoplesContainer" id="notre-equipe">
         <h2 className="Title">Notre équipe</h2>
         <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
-        <div className="ListContainer">
+        <div className="ListContainer" data-testid="people-list">
           <PeopleCard
             imageSrc="/images/stephanie-liverani-Zz5LQe-VSMY-unsplash.png"
             name="Samira"
             position="CEO"
+            imageAlt="Samira"
           />
           <PeopleCard
             imageSrc="/images/linkedin-sales-solutions-pAtA8xe_iVM-unsplash.png"
             name="Jean-baptiste"
             position="Directeur marketing"
+            imageAlt="Jean-baptiste"
           />
           <PeopleCard
             imageSrc="/images/christina-wocintechchat-com-SJvDxw0azqw-unsplash.png"
             name="Alice"
             position="CXO"
+            imageAlt="Alice"
           />
           <PeopleCard
             imageSrc="/images/jonas-kakaroto-KIPqvvTOC1s-unsplash.png"
             name="Luís"
             position="Animateur"
+            imageAlt="Luís"
           />
           <PeopleCard
             imageSrc="/images/amy-hirschi-b3AYk8HKCl0-unsplash1.png"
             name="Christine"
             position="VP animation"
+            imageAlt="Christine"
           />
           <PeopleCard
             imageSrc="/images/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash.png"
             name="Isabelle"
             position="VP communication"
+            imageAlt="Isabelle"
           />
         </div>
       </section>
@@ -140,11 +147,11 @@ const Page = () => {
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
-        <address>45 avenue de la République, 75000 Paris</address>
+        <address >45 avenue de la République, 75000 Paris</address>
         <div>01 23 45 67 89</div>
         <div>contact@724events.com</div>
         <div>
-          <a href="#twitch">
+          <a href="#twitch" data-testid ="twitch">
             <Icon name="twitch" />
           </a>
           <a href="#facebook">
@@ -158,9 +165,9 @@ const Page = () => {
           </a>
         </div>
       </div>
-      <div className="col description">
-        <Logo size="large" />
-        <p>
+      <div className="col description" >
+        <Logo size="large"/>
+        <p data-testid="footer-desc">
           Une agence événementielle propose des prestations de service
           spécialisées dans la conception et l&apos;organisation de divers événements
           tels que des événements festifs, des manifestations sportives et

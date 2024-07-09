@@ -48,9 +48,9 @@ const EventList = () => {
             selection={Array.from(typeList)}
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
-          <div id="events" className="ListContainer">
+          <div id="events" className="ListContainer" data-testid="event-lists">
             {filteredEvents.map((event) => (
-              <Modal key={event.id} Content={<ModalEvent event={event} />}>
+              <Modal key={event.id} Content={<ModalEvent event={event}/>}>
                 {({ setIsOpened }) => (
                   <EventCard
                     onClick={() => setIsOpened(true)}
@@ -58,11 +58,13 @@ const EventList = () => {
                     title={event.title}
                     date={new Date(event.date)}
                     label={event.type}
-                  />
+                    imageAlt={event.title}
+                    />
                 )}
               </Modal>
             ))}
           </div>
+          
           <div className="Pagination">
             {[...Array(pageNumber || 0)].map((_, n) => (
               // eslint-disable-next-line react/no-array-index-key
