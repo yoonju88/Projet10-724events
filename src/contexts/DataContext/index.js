@@ -40,18 +40,8 @@ export const DataProvider = ({ children }) => {
         new Date(b.date) > new Date(a.date) ? b : a
       ), data.events[0]);
 
-      const latestFocus = data.focus.reduce((a, b) => (
-        new Date(b.date) > new Date(a.date) ? b : a
-      ), data.focus[0]);
-
-      if (latestEvent && latestFocus) {
-        const latestDateEvent = new Date(latestEvent.date)
-        const latestDateFocus = new Date(latestFocus.date)
-        if (latestDateEvent > latestDateFocus) {
-          setLast(latestEvent)
-        } else if (latestDateEvent < latestDateFocus) {
-          setLast(latestFocus)
-        }
+      if (latestEvent) {
+         setLast(latestEvent)
       }
     }
   }, [data])
