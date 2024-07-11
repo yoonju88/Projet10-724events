@@ -35,7 +35,7 @@ export const DataProvider = ({ children }) => {
   }, [data, getData]);
 
   useEffect(() => {
-    if (data && data.events && data.focus) {
+    if (data && data.events) {
       const latestEvent = data.events.reduce((a, b) => (
         new Date(b.date) > new Date(a.date) ? b : a
       ), data.events[0]);
