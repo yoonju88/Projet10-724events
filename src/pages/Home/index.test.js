@@ -2,6 +2,7 @@ import { fireEvent, getByTestId, render, screen, waitFor } from "@testing-librar
 import Home from "./index";
 import { api, DataProvider } from "../../contexts/DataContext";
 
+
 const data = {
   events: [
     {
@@ -156,7 +157,9 @@ describe("When a page is created", () => {
       new Date(b.date) > new Date(a.date) ? b : a
     ))
     expect(lastEvent).toBeInTheDocument()
-    expect(lastEvent.querySelector("img")).toBeInTheDocument()
+    const lastEventImage = lastEvent.querySelector("img")
+    expect(lastEventImage).toBeInTheDocument()
+    expect(lastEventImage).toHaveAttribute("src")
     expect(lastEvent.querySelector(".EventCard__title")).toBeInTheDocument()
     expect(lastEvent.querySelector(".EventCard__month")).toBeInTheDocument()
   })
