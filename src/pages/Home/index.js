@@ -131,7 +131,7 @@ const Page = () => {
         </Modal>
       </div>
     </main>
-    <footer className="row">
+    <footer className="row" >
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         {lastData ?
@@ -151,16 +151,16 @@ const Page = () => {
         <div>01 23 45 67 89</div>
         <div>contact@724events.com</div>
         <div>
-          <a href="https://www.twitch.tv/">
+          <a href="https://www.twitch.tv/" data-testid = "link">
             <Icon name="twitch" />
           </a>
-          <a href="https://www.facebook.com/">
+          <a href="https://www.facebook.com/" data-testid = "link">
             <Icon name="facebook" />
           </a>
-          <a href="https://x.com/home">
+          <a href="https://x.com/home" data-testid = "link">
             <Icon name="twitter" />
           </a>
-          <a href="https://www.youtube.com/">
+          <a href="https://www.youtube.com/" data-testid = "link">
             <Icon name="youtube" />
           </a>
         </div>

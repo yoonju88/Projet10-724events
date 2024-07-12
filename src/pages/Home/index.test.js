@@ -125,7 +125,10 @@ describe("When a page is created", () => {
         <Home />
       </DataProvider>
     );
-    await screen.findByTestId("footer-desc")
+    const Links = await screen.findAllByTestId ('link')
+    Links.forEach((link) => { 
+      expect(link).toHaveAttribute ('href')
+    })
     const logo = await screen.findByTestId('logo-svg')
     expect(logo).toBeInTheDocument()
     expect(logo).toHaveAttribute('xmlns', 'http://www.w3.org/2000/svg')
